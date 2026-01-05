@@ -63,8 +63,8 @@ body {
 }
 
 .brand-name {
-  letter-spacing: 0.15em;
-  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
   color: #ffffff;
 }
 
@@ -135,6 +135,26 @@ body {
   gap: 12px;
   margin-top: 16px;
   flex-wrap: wrap;
+}
+
+/* Cards shared transitions */
+.service-card,
+.project-card,
+.info-card,
+.contact-card,
+.map-card,
+#info-panel {
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.service-card:hover,
+.project-card:hover,
+.info-card:hover,
+.contact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+  border-color: #34c0c9;
 }
 
 .stat-card {
@@ -216,6 +236,7 @@ body {
   cursor: pointer;
   padding: 6px 0;
   color: #cbd5f5;
+  transition: color 0.2s ease;
 }
 
 .city-item:hover {
@@ -233,10 +254,12 @@ body {
   text-transform: uppercase;
   cursor: pointer;
   margin-bottom: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
 
 .pill-button:hover {
-  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55);
 }
 
 /* Lists & cards */
@@ -386,6 +409,10 @@ body {
 
   #map {
     height: 260px;
+  }
+
+  .brand-name {
+    font-size: 0.72rem;
   }
 }
 
