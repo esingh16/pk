@@ -15,11 +15,7 @@ body {
   background: #2f3840;
 }
 
-/* Color palette inspired by visiting card [file:6][file:7]
-   Dark grey: #30363d
-   Teal: #34c0c9
-   Orange: #f7931e
-*/
+/* Color palette inspired by visiting card [file:6][file:7] */
 
 /* Header */
 .site-header {
@@ -137,7 +133,7 @@ body {
   flex-wrap: wrap;
 }
 
-/* Cards shared transitions */
+/* Shared card transitions */
 .service-card,
 .project-card,
 .info-card,
@@ -195,7 +191,7 @@ body {
   height: 340px;
 }
 
-/* Dark tint for Leaflet tiles */
+/* Dark Leaflet tint */
 .leaflet-container {
   background: #1f252b;
 }
@@ -386,6 +382,45 @@ body {
   border-color: #34c0c9;
 }
 
+/* Project detail layout */
+.project-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.project-detail-main {
+  background: #30363d;
+  border-radius: 12px;
+  padding: 16px;
+  border-left: 3px solid #34c0c9;
+}
+
+.project-detail-sidebar {
+  background: #30363d;
+  border-radius: 12px;
+  padding: 16px;
+  border-top: 3px solid #f7931e;
+}
+
+.project-metrics {
+  list-style: none;
+  padding-left: 0;
+  font-size: 0.9rem;
+}
+
+.project-metrics li {
+  margin-bottom: 6px;
+}
+
+.project-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
 /* Footer */
 .site-footer {
   padding: 14px 24px;
@@ -413,6 +448,12 @@ body {
 
   .brand-name {
     font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .project-detail-layout {
+    grid-template-columns: 1fr;
   }
 }
 
