@@ -2,112 +2,356 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Paramount Project Endeavours Pvt Ltd</title>
+  <title>Paramount Project Endeavors Pvt. Ltd.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Paramount Project Endeavors Private Limited - transforming vision into action through project execution, management and business services across India."
+  />
+  <link rel="stylesheet" href="styles.css" />
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
     crossorigin=""
   />
-  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Header -->
   <header class="site-header">
     <div class="brand">
-      <img src="logo.png" alt="Paramount Project Endeavours logo" class="logo-img" />
-      <span class="brand-name">Paramount Project Endeavours Pvt Ltd</span>
+      <div class="logo-circle">
+        <span class="logo-letter">P</span>
+      </div>
+      <div class="brand-text">
+        <div class="brand-name">PARAMOUNT</div>
+        <div class="brand-tagline">Transforming Vision into Action</div>
+      </div>
     </div>
+
     <nav class="main-nav">
       <a href="#home">Home</a>
-      <a href="#about">About</a>
+      <a href="#about">Company</a>
       <a href="#services">Services</a>
       <a href="#projects">Projects</a>
+      <a href="#governance">Governance</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <main>
-    <!-- HOME / MAP -->
-    <section id="home" class="section section-home">
-      <div class="hero-text">
-        <h1>Projects Across India</h1>
-        <p>Explore our key developments city by city.</p>
-      </div>
+  <!-- Hero + map -->
+  <main id="home" class="section section-hero">
+    <div class="hero-left">
+      <h1>Paramount Project Endeavors Private Limited</h1>
+      <p class="hero-lead">
+        A private, unlisted Indian **business** services company, transforming
+        complex projects into tangible outcomes since January&nbsp;2013. [web:8][web:10][web:11][web:12]
+      </p>
+      <p class="hero-sub">
+        From project execution and civil works to financial facilitation and
+        end‑to‑end management, Paramount ensures on‑time, quality delivery for
+        residential, commercial and infrastructure initiatives. [web:9][web:14]
+      </p>
 
-      <!-- Real leaflet map in a fixed card -->
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-number">2013</div>
+          <div class="stat-label">Year of Incorporation</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">Active</div>
+          <div class="stat-label">Company Status</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">CIN</div>
+          <div class="stat-label">U74999MH2013PTC240009</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-map">
       <div class="map-card">
         <div id="map"></div>
       </div>
+    </div>
 
-      <!-- Info panel for city/site details -->
-      <aside id="info-panel">
-        <h2 id="info-title">Site details</h2>
-        <div id="info-content">
-          Click Mumbai, Bengaluru or Pune markers to view sites.
-        </div>
-      </aside>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <h2>About</h2>
-      <p>
-        Paramount Project Endeavours Pvt Ltd delivers high‑quality residential
-        and commercial projects across India with a focus on design,
-        durability and on‑time delivery.
-      </p>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services" class="section section-alt">
-      <h2>Services</h2>
-      <ul class="list">
-        <li>End‑to‑end real estate development.</li>
-        <li>Architectural design and structural engineering.</li>
-        <li>Project management and construction supervision.</li>
-        <li>Post‑handover facilities management.</li>
-      </ul>
-    </section>
-
-    <!-- PROJECTS GALLERY -->
-    <section id="projects" class="section">
-      <h2>Projects Gallery</h2>
-      <div class="project-grid">
-        <div class="project-card">
-          <h3>Mumbai Skyline Residences</h3>
-          <p>Bandra, Mumbai – Premium residential tower with sea views.</p>
-        </div>
-        <div class="project-card">
-          <h3>Airport Business Hub</h3>
-          <p>Santacruz, Mumbai – Grade‑A office spaces near the airport.</p>
-        </div>
-        <div class="project-card">
-          <h3>Tech Park Malad</h3>
-          <p>Malad, Mumbai – IT park with flexible office floors.</p>
-        </div>
-        <div class="project-card">
-          <h3>Whitefield Innovation Campus</h3>
-          <p>Bengaluru – Modern tech campus with green design.</p>
-        </div>
-        <div class="project-card">
-          <h3>Hinjawadi IT Center</h3>
-          <p>Pune – Multi‑phase IT and business park.</p>
-        </div>
+    <aside class="hero-info" id="info-panel">
+      <h2 id="info-title">Projects Across India</h2>
+      <div id="info-content">
+        Select a city on the map or from the list below to explore our key
+        locations and project highlights.
       </div>
-    </section>
+      <button id="back-to-city" class="pill-button" type="button">
+        Back to City Overview
+      </button>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section section-alt">
-      <h2>Contact</h2>
-      <p>Email: contact@paramountprojects.in</p>
-      <p>Phone: +91‑XXXXXXXXXX</p>
-      <p>Address: Corporate office address, India.</p>
-    </section>
+      <ul class="city-list" id="city-list">
+        <!-- populated by script.js -->
+      </ul>
+    </aside>
   </main>
 
+  <!-- Company section -->
+  <section id="about" class="section section-alt">
+    <h2>Company Profile</h2>
+    <p>
+      Paramount Project Endeavors Private Limited is an active, private,
+      non‑government company registered with the Registrar of Companies,
+      Mumbai, Maharashtra, India. [web:9][web:11][web:12][web:19]
+    </p>
+    <p>
+      Incorporated on 28&nbsp;January&nbsp;2013, the company is classified as a
+      company limited by shares and operates primarily under “Other Business
+      Activities (Business Services)”. [web:8][web:10][web:11][web:12]
+    </p>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Key Registration Details</h3>
+        <ul class="list">
+          <li>CIN: U74999MH2013PTC240009. [web:8][web:10][web:11][web:12]</li>
+          <li>Company Type: Private Unlisted Indian Non‑Government. [web:11][web:12]</li>
+          <li>Company Category: Company limited by shares. [web:12][web:19]</li>
+          <li>
+            GST Registration: 27AAGCP9936K1ZP (Maharashtra). [web:19][web:9]
+          </li>
+          <li>Latest balance sheet filed: 31 March 2025. [web:10][web:11]</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>Directors & Leadership</h3>
+        <ul class="list">
+          <li>Alok Mishra – Director. [web:11][web:19]</li>
+          <li>Archana Pradeep Singh – Director. [web:11][web:19]</li>
+          <li>Pradeep Narayani Singh – Director. [web:11][web:19]</li>
+          <li>Shweta Alok Mishra – Director. [web:11][web:19]</li>
+        </ul>
+        <p class="small-note">
+          The leadership team brings combined expertise in project execution,
+          finance, and real‑estate development. [web:9][web:14]
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <h2>Core Services</h2>
+    <p>
+      Paramount offers integrated project, engineering, and business support
+      services to institutions, developers, and individual clients across
+      India. [web:9][web:14]
+    </p>
+
+    <div class="service-grid">
+      <div class="service-card">
+        <h3>Project Execution</h3>
+        <ul class="list">
+          <li>End‑to‑end execution of residential and commercial projects. [web:9][web:14]</li>
+          <li>Coordination with architects, consultants, and contractors. [web:14]</li>
+          <li>Scheduling, progress tracking, and site supervision. [web:14]</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <h3>Project Management</h3>
+        <ul class="list">
+          <li>Comprehensive project planning and resource allocation. [web:14]</li>
+          <li>Risk management and cost control frameworks. [web:11][web:19]</li>
+          <li>Quality, HSE, and compliance monitoring. [web:9][web:14]</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <h3>Engineering & Design</h3>
+        <ul class="list">
+          <li>Residential architectural services and layouts. [web:14]</li>
+          <li>Civil and structural engineering support. [web:14]</li>
+          <li>Value engineering for efficient, durable solutions. [web:14]</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <h3>Financial & Business Services</h3>
+        <ul class="list">
+          <li>Facilitating project finance and investment tie‑ups. [web:14][web:11]</li>
+          <li>Business services support for allied ventures. [web:8][web:11]</li>
+          <li>Documentation and liaison for approvals. [web:9][web:14]</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section section-alt">
+    <h2>Presence & Sample Projects</h2>
+    <p>
+      Paramount has executed and supported projects across key Indian metros,
+      with a strong base in Mumbai and Western India. [web:9][web:14]
+    </p>
+
+    <div class="project-grid">
+      <article class="project-card">
+        <h3>Mumbai Region</h3>
+        <ul class="list">
+          <li>Residential and mixed‑use developments in Malad and Western suburbs. [web:9][web:14]</li>
+          <li>Civil and interior works for commercial spaces. [web:14]</li>
+        </ul>
+      </article>
+
+      <article class="project-card">
+        <h3>Western India</h3>
+        <ul class="list">
+          <li>Support for hospitality, retail, and institutional projects. [web:9][web:14]</li>
+          <li>Business services for emerging enterprises. [web:11][web:19]</li>
+        </ul>
+      </article>
+
+      <article class="project-card">
+        <h3>Consulting Engagements</h3>
+        <ul class="list">
+          <li>Project management consulting for builders and investors. [web:14]</li>
+          <li>Technical due‑diligence and feasibility inputs. [web:11][web:19]</li>
+        </ul>
+      </article>
+
+      <article class="project-card">
+        <h3>Operational Strength</h3>
+        <ul class="list">
+          <li>Lean team supported by specialist partners and vendors. [web:13][web:14]</li>
+          <li>Process‑driven delivery with multi‑city capability. [web:9][web:11]</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Governance / snapshot table -->
+  <section id="governance" class="section">
+    <h2>Corporate Snapshot</h2>
+    <p>
+      The table below summarises key statutory and operational information for
+      Paramount Project Endeavors Private Limited. [web:8][web:10][web:11][web:12][web:19]
+    </p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Attribute</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Company Name</td>
+          <td>Paramount Project Endeavors Private Limited. [web:8][web:10]</td>
+        </tr>
+        <tr>
+          <td>Date of Incorporation</td>
+          <td>28 January 2013. [web:8][web:10][web:11][web:12]</td>
+        </tr>
+        <tr>
+          <td>Status</td>
+          <td>Active. [web:10][web:11][web:12]</td>
+        </tr>
+        <tr>
+          <td>CIN</td>
+          <td>U74999MH2013PTC240009. [web:8][web:10][web:11][web:12]</td>
+        </tr>
+        <tr>
+          <td>Registered Office</td>
+          <td>
+            Flat No. 13A, 3rd Floor, Malad Ajay Apt. CHS Ltd., 2nd Kasturba
+            Cross Road, Malad (W), Mumbai – 400064, Maharashtra, India. [web:9][web:19]
+          </td>
+        </tr>
+        <tr>
+          <td>Alternate Address on Record</td>
+          <td>
+            A‑2/42 RNA Broadway Avenue CHS Ltd, Shanti Park, Mira Road (E),
+            Thane, Maharashtra 401107, India. [web:15]
+          </td>
+        </tr>
+        <tr>
+          <td>Industry</td>
+          <td>Other Business Activities (Business Services). [web:8][web:11]</td>
+        </tr>
+        <tr>
+          <td>Directors</td>
+          <td>
+            Alok Mishra, Archana Pradeep Singh, Pradeep Narayani Singh, Shweta
+            Alok Mishra. [web:11][web:19]
+          </td>
+        </tr>
+        <tr>
+          <td>Latest Financials</td>
+          <td>Balance sheet filed up to 31 March 2025. [web:10][web:11]</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section section-alt">
+    <h2>Contact</h2>
+    <p>
+      Reach out to discuss upcoming projects, consulting requirements, or
+      partnership opportunities with Paramount Project Endeavors. [web:14][web:19]
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Registered Office</h3>
+        <p>
+          Paramount Project Endeavors Pvt. Ltd.<br />
+          Flat No. 13A, 3rd Floor, Malad Ajay Apt. CHS Ltd.,<br />
+          2nd Kasturba Cross Road, Malad (W),<br />
+          Mumbai – 400064, Maharashtra, India. [web:9][web:19]
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Director Contact</h3>
+        <p>
+          Pradeep Singh, Director<br />
+          T: +91 22 2879 2177<br />
+          M: +91 99204 79027<br />
+          E: info@ppepl.co.in<br />
+          E: pradeep.singh@ppepl.co.in [file:7]
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <h3>General Communication</h3>
+        <p>
+          Email: igs.paramount@gmail.com<br />
+          Website: www.ppepl.co.in [file:7][web:15]
+        </p>
+      </div>
+
+      <form class="contact-form">
+        <h3>Quick Enquiry</h3>
+        <div class="form-row">
+          <input type="text" placeholder="Full name" required />
+        </div>
+        <div class="form-row">
+          <input type="email" placeholder="Work email" required />
+        </div>
+        <div class="form-row">
+          <input type="text" placeholder="Organisation / Project" />
+        </div>
+        <div class="form-row">
+          <textarea rows="4" placeholder="How can we help?"></textarea>
+        </div>
+        <button type="submit" class="pill-button">
+          Submit enquiry
+        </button>
+      </form>
+    </div>
+  </section>
+
   <footer class="site-footer">
-    <p>© Paramount Project Endeavours Pvt Ltd • All rights reserved.</p>
+    <span>© 2026 Paramount Project Endeavors Pvt. Ltd. All rights reserved.</span>
   </footer>
 
   <script
