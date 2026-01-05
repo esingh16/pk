@@ -1,5 +1,6 @@
-/* styles.css */
+/* styles.css – Paramount theme */
 
+/* Reset */
 *,
 *::before,
 *::after {
@@ -8,13 +9,19 @@
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #e5e7eb;
-  background: #020617;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #f4f4f4;
+  background: #2f3840;
 }
 
-/* Header / nav */
+/* Color palette inspired by visiting card [file:6][file:7]
+   Dark grey: #30363d
+   Teal: #34c0c9
+   Orange: #f7931e
+*/
 
+/* Header */
 .site-header {
   position: sticky;
   top: 0;
@@ -23,8 +30,8 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 10px 24px;
-  background: #020617;
-  border-bottom: 1px solid #111827;
+  background: #30363d;
+  border-bottom: 2px solid #f7931e;
 }
 
 .brand {
@@ -33,70 +40,133 @@ body {
   gap: 10px;
 }
 
-.logo-img {
-  height: 32px;
-  width: auto;
+.logo-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #34c0c9, #f7931e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.logo-letter {
+  transform: translateY(-1px);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
 }
 
 .brand-name {
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  color: #f9fafb;
+  letter-spacing: 0.15em;
+  font-size: 0.9rem;
+  color: #ffffff;
 }
 
+.brand-tagline {
+  font-size: 0.75rem;
+  color: #d1d5db;
+}
+
+/* Navigation */
 .main-nav a {
   margin-left: 18px;
-  color: #9ca3af;
+  color: #e5e7eb;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .main-nav a:hover {
-  color: #a3e635;
+  color: #34c0c9;
 }
 
 /* Sections */
-
 .section {
   padding: 48px 24px;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .section-alt {
-  background: #020617;
-  border-top: 1px solid #111827;
-  border-bottom: 1px solid #111827;
+  background: #262c32;
 }
 
 .section h2 {
   margin-top: 0;
-  color: #f9fafb;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 1rem;
 }
 
-/* Home / map layout */
-
-.section-home {
+/* Hero layout */
+.section-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 24px;
   align-items: start;
 }
 
-.hero-text h1 {
+.hero-left h1 {
+  font-size: 1.8rem;
   margin-top: 0;
-  font-size: 2rem;
-  color: #f9fafb;
+  color: #ffffff;
+}
+
+.hero-lead {
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.hero-sub {
+  font-size: 0.92rem;
+  color: #e5e7eb;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: #30363d;
+  border-radius: 10px;
+  padding: 10px 14px;
+  border-left: 3px solid #f7931e;
+  min-width: 120px;
+}
+
+.stat-number {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #34c0c9;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #d1d5db;
 }
 
 /* Map card */
+.hero-map {
+  width: 100%;
+}
 
 .map-card {
-  background: #020617;
-  border-radius: 20px;
+  background: #30363d;
+  border-radius: 16px;
   padding: 0;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
-  border: 1px solid #065f46;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+  border: 1px solid #34c0c9;
   overflow: hidden;
 }
 
@@ -105,105 +175,230 @@ body {
   height: 340px;
 }
 
-/* Dark map tiles hack: makes OSM look dark and slightly greenish */
-/* Based on Leaflet dark theme techniques. [web:61][web:63] */
-
+/* Dark tint for Leaflet tiles */
 .leaflet-container {
-  background: #020617;
+  background: #1f252b;
 }
 
 .leaflet-tile-pane {
-  filter: brightness(0.5) saturate(1.4) hue-rotate(-20deg);
-}
-
-/* City markers and site markers */
-
-.city-marker-icon {
-  background: #16a34a;
-  border-radius: 999px;
-  border: 2px solid #000;
-  width: 16px;
-  height: 16px;
-}
-
-.site-marker {
-  stroke: #000;
-  stroke-width: 1px;
+  filter: brightness(0.6) saturate(1.3) hue-rotate(-15deg);
 }
 
 /* Info panel */
-
 #info-panel {
-  background: #020617;
+  background: #30363d;
   border-radius: 16px;
   padding: 16px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
-  border: 1px solid #065f46;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+  border: 1px solid #f7931e;
 }
 
 #info-title {
   margin-top: 0;
-  color: #f9fafb;
+  font-size: 1rem;
+  color: #ffffff;
 }
 
 #info-content {
-  font-size: 0.95rem;
-  color: #d1d5db;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+  margin-bottom: 12px;
 }
 
-.site-item {
+.city-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 8px 0 0;
+  font-size: 0.88rem;
+}
+
+.city-item {
   cursor: pointer;
-  margin: 4px 0;
+  padding: 6px 0;
+  color: #cbd5f5;
 }
 
-.site-item:hover {
-  color: #a3e635;
+.city-item:hover {
+  color: #34c0c9;
 }
 
-/* General lists and cards */
+.pill-button {
+  background: linear-gradient(90deg, #f7931e, #34c0c9);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
 
+.pill-button:hover {
+  opacity: 0.9;
+}
+
+/* Lists & cards */
 .list {
   padding-left: 18px;
+  font-size: 0.9rem;
 }
 
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.info-card {
+  background: #30363d;
+  border-radius: 12px;
+  padding: 14px;
+  border-top: 3px solid #34c0c9;
+}
+
+.small-note {
+  font-size: 0.8rem;
+  color: #d1d5db;
+  margin-top: 8px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.service-card {
+  background: #30363d;
+  border-radius: 12px;
+  padding: 14px;
+  border-top: 3px solid #f7931e;
+}
+
+/* Projects */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
+  margin-top: 16px;
 }
 
 .project-card {
-  background: #020617;
+  background: #30363d;
   border-radius: 12px;
   padding: 14px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
-  border: 1px solid #15803d;
+  border-left: 3px solid #34c0c9;
+}
+
+/* Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  font-size: 0.9rem;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #4b5563;
+  padding: 8px 10px;
+}
+
+.data-table thead {
+  background: #30363d;
+  color: #ffffff;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background: #262c32;
+}
+
+/* Contact */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+  margin-top: 16px;
+  align-items: start;
+}
+
+.contact-card {
+  background: #30363d;
+  border-radius: 12px;
+  padding: 14px;
+  border-top: 3px solid #34c0c9;
+  font-size: 0.9rem;
+}
+
+.contact-form {
+  background: #30363d;
+  border-radius: 12px;
+  padding: 16px;
+  border-top: 3px solid #f7931e;
+  font-size: 0.9rem;
+}
+
+.form-row {
+  margin-bottom: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #4b5563;
+  padding: 7px 8px;
+  font-size: 0.85rem;
+  background: #262c32;
+  color: #f9fafb;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #34c0c9;
 }
 
 /* Footer */
-
 .site-footer {
   padding: 14px 24px;
   text-align: center;
-  background: #020617;
-  color: #6b7280;
-  font-size: 0.85rem;
-  border-top: 1px solid #111827;
+  background: #262c32;
+  color: #9ca3af;
+  font-size: 0.8rem;
+  border-top: 2px solid #f7931e;
 }
 
 /* Responsive */
-
-@media (max-width: 900px) {
-  .section-home {
+@media (max-width: 980px) {
+  .section-hero {
     grid-template-columns: 1fr;
   }
 
   .main-nav a {
     margin-left: 10px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   #map {
     height: 260px;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 4px;
   }
 }
