@@ -1,4 +1,4 @@
-// script.js – interactive map + city list
+// script.js – interactive map + city list and form enhancements
 
 // Data model: cities and nested sites
 const projectData = {
@@ -62,11 +62,15 @@ const infoTitle = document.getElementById("info-title");
 const infoContent = document.getElementById("info-content");
 const cityListEl = document.getElementById("city-list");
 
-// Initialise Leaflet map centered on India
-const map = L.map("map", { zoomControl: false }).setView(
-  [22.9734, 78.6569],
-  5
-);
+// Initialise Leaflet map centered on India, with smooth animation
+const map = L.map("map", {
+  zoomControl: false,
+  zoomAnimation: true,
+  zoomAnimationThreshold: 4,
+  inertia: true,
+  inertiaDeceleration: 2000
+}).setView([22.9734, 78.6569], 5);
+
 L.control
   .zoom({
     position: "bottomright"
@@ -179,4 +183,14 @@ showCity(projectData.cities[0]);
 const yearSpan = document.getElementById("current-year");
 if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear().toString();
+}
+
+// Light feedback on successful form submission (for Formspree)
+const contactForm = document.querySelector(".contact-form");
+if (contactForm) {
+  contactForm.addEventListener("submit", function () {
+    setTimeout(() => {
+      alert("Thank you. Your enquiry has been submitted.");
+    }, 400);
+  });
 }
