@@ -1,173 +1,119 @@
 // script.js
 
-// 1. Project data structure
+// Data model: cities and nested sites
 const projectData = {
   cities: [
     {
       name: "Mumbai",
-      lat: 19.076,
-      lng: 72.8777,
-      zoom: 11,
-      description: "Key commercial projects in Mumbai region.",
+      description: "Key residential and commercial projects in Mumbai.",
       sites: [
         {
           name: "Bandra Site",
           area: "Bandra",
-          lat: 19.0596,
-          lng: 72.8295,
           details:
-            "High‑rise residential tower with modern amenities in Bandra."
+            "Premium high‑rise residential tower overlooking the sea."
         },
         {
           name: "Santacruz Site",
           area: "Santacruz",
-          lat: 19.0825,
-          lng: 72.8417,
           details:
-            "Premium mixed‑use development close to Santacruz station."
+            "Mixed‑use commercial hub near the airport with office and retail."
         },
         {
           name: "Malad Site",
           area: "Malad",
-          lat: 19.186,
-          lng: 72.848,
           details:
-            "IT park and commercial complex in Malad West."
+            "IT and business park designed for flexible office layouts."
         }
       ]
     },
     {
       name: "Bengaluru",
-      lat: 12.9716,
-      lng: 77.5946,
-      zoom: 11,
-      description: "Technology and residential projects in Bengaluru.",
+      description: "Technology‑focused office and residential campuses.",
       sites: [
         {
           name: "Whitefield Campus",
           area: "Whitefield",
-          lat: 12.9698,
-          lng: 77.7499,
-          details: "Large tech campus with multiple office blocks."
+          details:
+            "Large tech campus with green open spaces and shared amenities."
         },
         {
           name: "Electronic City Towers",
           area: "Electronic City",
-          lat: 12.8452,
-          lng: 77.6602,
-          details: "High‑density office space for IT companies."
+          details:
+            "Grade‑A office towers for IT and startup ecosystems."
         }
       ]
     },
     {
       name: "Pune",
-      lat: 18.5204,
-      lng: 73.8567,
-      zoom: 11,
-      description: "Industrial and residential developments in Pune.",
+      description: "IT and residential developments in Pune.",
       sites: [
         {
           name: "Hinjawadi Tech Park",
           area: "Hinjawadi",
-          lat: 18.597,
-          lng: 73.706,
-          details: "IT park with multiple phases and SEZ status."
+          details:
+            "Multi‑phase technology park with modern infrastructure."
         }
       ]
     }
   ]
 };
 
-// 2. Initialize map centered on India
-const map = L.map("map").setView([22.9734, 78.6569], 5); // India center
+const infoTitle = document.getElementById("info-title");
+const infoContent = document.getElementById("info-content");
 
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution: "&copy; OpenStreetMap contributors"
-}).addTo(map);
+// Show city summary and list of its sites
+function showCity(city) {
+  infoTitle.textContent = city.name;
+  let html = `<p><strong>${city.description}</strong></p><ul>`;
+  city.sites.forEach((site, index) => {
+    html += `
+      <li class="site-item" data-city="${city.name}" data-site-index="${index}">
+        ${site.name} – ${site.area}
+      </li>`;
+  });
+  html += "</ul><p>Click a site name above to view details.</p>";
+  infoContent.innerHTML = html;
 
-// For nested markers, keep references
-const cityMarkers = {};
-const siteMarkers = {}; // keyed by city name -> array of markers
-
-// Utility: update info panel
-function showCityInfo(city) {
-  const titleEl = document.getElementById("info-title");
-  const contentEl = document.getElementById("info-content");
-
-  titleEl.textContent = city.name;
-  let html = `<p class="city-title">${city.description}</p>`;
-
-  if (city.sites && city.sites.length) {
-    html += "<ul>";
-    city.sites.forEach((site) => {
-      html += `<li><strong>${site.name}</strong> – ${site.area}</li>`;
+  // Attach click handlers to site list items
+  const siteItems = infoContent.querySelectorAll(".site-item");
+  siteItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const cityName = item.getAttribute("data-city");
+      const idx = parseInt(item.getAttribute("data-site-index"), 10);
+      const c = projectData.cities.find((c) => c.name === cityName);
+      if (!c) return;
+      const site = c.sites[idx];
+      showSite(c, site);
     });
-    html += "</ul>";
-  }
-
-  contentEl.innerHTML = html;
+  });
 }
 
-function showSiteInfo(city, site) {
-  const titleEl = document.getElementById("info-title");
-  const contentEl = document.getElementById("info-content");
-
-  titleEl.textContent = site.name;
-  contentEl.innerHTML = `
-    <p class="site-title">${site.area}, ${city.name}</p>
+// Show individual site details
+function showSite(city, site) {
+  infoTitle.textContent = site.name;
+  infoContent.innerHTML = `
+    <p><strong>${site.area}, ${city.name}</strong></p>
     <p>${site.details}</p>
+    <button id="back-to-city">Back to ${city.name}</button>
   `;
+
+  const backBtn = document.getElementById("back-to-city");
+  backBtn.addEventListener("click", () => showCity(city));
 }
 
-// 3. Add city markers and nested site markers
-projectData.cities.forEach((city) => {
-  // City marker
-  const cityMarker = L.marker([city.lat, city.lng], {
-    title: city.name
-  }).addTo(map);
+// Attach click handlers to SVG city points
+document.querySelectorAll(".city-point").forEach((circle) => {
+  circle.addEventListener("click", () => {
+    const cityName = circle.getAttribute("data-city");
+    const city = projectData.cities.find((c) => c.name === cityName);
+    if (!city) return;
 
-  cityMarkers[city.name] = cityMarker;
-  siteMarkers[city.name] = [];
+    // Visual feedback: briefly scale the point
+    circle.classList.add("active-city");
+    setTimeout(() => circle.classList.remove("active-city"), 200);
 
-  cityMarker.bindTooltip(city.name);
-
-  cityMarker.on("click", () => {
-    // Zoom into city
-    map.setView([city.lat, city.lng], city.zoom, { animate: true });
-    showCityInfo(city);
-  });
-
-  // Site markers for that city
-  city.sites.forEach((site) => {
-    const marker = L.circleMarker([site.lat, site.lng], {
-      radius: 6,
-      color: "#1f2937",
-      fillColor: "#ef4444",
-      fillOpacity: 0.9
-    }).addTo(map);
-
-    marker.bindTooltip(`${site.name} (${site.area})`);
-
-    marker.on("click", () => {
-      // Slight zoom when clicking a specific site
-      map.setView([site.lat, site.lng], Math.max(city.zoom + 1, 12), {
-        animate: true
-      });
-      showSiteInfo(city, site);
-    });
-
-    siteMarkers[city.name].push(marker);
+    showCity(city);
   });
 });
-
-// Optional: fit bounds to all markers
-const allLatLngs = [];
-projectData.cities.forEach((city) => {
-  allLatLngs.push([city.lat, city.lng]);
-  city.sites.forEach((site) => {
-    allLatLngs.push([site.lat, site.lng]);
-  });
-});
-const bounds = L.latLngBounds(allLatLngs);
-map.fitBounds(bounds, { padding: [30, 30] });
