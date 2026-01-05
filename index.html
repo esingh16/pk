@@ -15,6 +15,11 @@
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
     crossorigin=""
   />
+  <!-- AOS scroll animations -->
+  <link
+    href="https://unpkg.com/aos@2.3.4/dist/aos.css"
+    rel="stylesheet"
+  />
 </head>
 <body>
   <!-- Header -->
@@ -24,7 +29,9 @@
         <span class="logo-letter">P</span>
       </div>
       <div class="brand-text">
-        <div class="brand-name">PARAMOUNT</div>
+        <div class="brand-name">
+          PARAMOUNT PROJECT ENDEAVORS PVT. LTD.
+        </div>
         <div class="brand-tagline">Transforming Vision into Action</div>
       </div>
     </div>
@@ -40,16 +47,17 @@
   </header>
 
   <!-- Hero + map -->
-  <main id="home" class="section section-hero">
+  <main id="home" class="section section-hero" data-aos="fade-up">
     <div class="hero-left">
       <h1>Paramount Project Endeavors Private Limited</h1>
       <p class="hero-lead">
-        A private, unlisted Indian **business** services company, transforming
-        complex projects into tangible outcomes since January&nbsp;2013. [web:8][web:10][web:11][web:12]
+        A private, unlisted Indian **business** services company that has been
+        transforming complex projects into tangible outcomes since
+        January&nbsp;2013. [web:8][web:10][web:11][web:12]
       </p>
       <p class="hero-sub">
-        From project execution and civil works to financial facilitation and
-        end‑to‑end management, Paramount ensures on‑time, quality delivery for
+        Through project execution, civil works, financial facilitation and
+        end‑to‑end management, Paramount delivers on‑time, quality outcomes for
         residential, commercial and infrastructure initiatives. [web:9][web:11]
       </p>
 
@@ -69,16 +77,21 @@
       </div>
     </div>
 
-    <div class="hero-map">
+    <div class="hero-map" data-aos="fade-up" data-aos-delay="100">
       <div class="map-card">
         <div id="map"></div>
       </div>
     </div>
 
-    <aside class="hero-info" id="info-panel">
+    <aside
+      class="hero-info"
+      id="info-panel"
+      data-aos="fade-up"
+      data-aos-delay="150"
+    >
       <h2 id="info-title">Projects Across India</h2>
       <div id="info-content">
-        Select a city on the map or from the list below to explore our key
+        Select a city on the map or from the list below to explore key
         locations and project highlights.
       </div>
       <button id="back-to-city" class="pill-button" type="button">
@@ -92,7 +105,7 @@
   </main>
 
   <!-- Company section -->
-  <section id="about" class="section section-alt">
+  <section id="about" class="section section-alt" data-aos="fade-up">
     <h2>Company Profile</h2>
     <p>
       Paramount Project Endeavors Private Limited is an active, private,
@@ -106,7 +119,7 @@
     </p>
 
     <div class="info-grid">
-      <div class="info-card">
+      <div class="info-card" data-aos="fade-up" data-aos-delay="50">
         <h3>Key Registration Details</h3>
         <ul class="list">
           <li>CIN: U74999MH2013PTC240009. [web:8][web:10][web:11][web:12]</li>
@@ -119,7 +132,7 @@
         </ul>
       </div>
 
-      <div class="info-card">
+      <div class="info-card" data-aos="fade-up" data-aos-delay="100">
         <h3>Directors & Leadership</h3>
         <ul class="list">
           <li>Alok Mishra – Director. [web:11][web:19]</li>
@@ -136,7 +149,7 @@
   </section>
 
   <!-- Services -->
-  <section id="services" class="section">
+  <section id="services" class="section" data-aos="fade-up">
     <h2>Core Services</h2>
     <p>
       Paramount offers integrated project, engineering, and business support
@@ -145,7 +158,7 @@
     </p>
 
     <div class="service-grid">
-      <div class="service-card">
+      <div class="service-card" data-aos="fade-up" data-aos-delay="0">
         <h3>Project Execution</h3>
         <ul class="list">
           <li>End‑to‑end execution of residential and commercial projects. [web:9][web:11]</li>
@@ -154,7 +167,7 @@
         </ul>
       </div>
 
-      <div class="service-card">
+      <div class="service-card" data-aos="fade-up" data-aos-delay="80">
         <h3>Project Management</h3>
         <ul class="list">
           <li>Comprehensive project planning and resource allocation. [web:11]</li>
@@ -163,7 +176,7 @@
         </ul>
       </div>
 
-      <div class="service-card">
+      <div class="service-card" data-aos="fade-up" data-aos-delay="160">
         <h3>Engineering & Design</h3>
         <ul class="list">
           <li>Residential architectural services and layouts. [web:14]</li>
@@ -172,7 +185,7 @@
         </ul>
       </div>
 
-      <div class="service-card">
+      <div class="service-card" data-aos="fade-up" data-aos-delay="240">
         <h3>Financial & Business Services</h3>
         <ul class="list">
           <li>Facilitating project finance and investment tie‑ups. [web:11]</li>
@@ -184,7 +197,7 @@
   </section>
 
   <!-- Projects -->
-  <section id="projects" class="section section-alt">
+  <section id="projects" class="section section-alt" data-aos="fade-up">
     <h2>Presence & Sample Projects</h2>
     <p>
       Paramount has executed and supported projects across key Indian metros,
@@ -192,7 +205,7 @@
     </p>
 
     <div class="project-grid">
-      <article class="project-card">
+      <article class="project-card" data-aos="fade-up" data-aos-delay="0">
         <h3>Mumbai Region</h3>
         <ul class="list">
           <li>Residential and mixed‑use developments in Malad and Western suburbs. [web:9][web:20]</li>
@@ -200,7 +213,7 @@
         </ul>
       </article>
 
-      <article class="project-card">
+      <article class="project-card" data-aos="fade-up" data-aos-delay="80">
         <h3>Western India</h3>
         <ul class="list">
           <li>Support for hospitality, retail, and institutional projects. [web:9][web:11]</li>
@@ -208,7 +221,7 @@
         </ul>
       </article>
 
-      <article class="project-card">
+      <article class="project-card" data-aos="fade-up" data-aos-delay="160">
         <h3>Consulting Engagements</h3>
         <ul class="list">
           <li>Project management consulting for builders and investors. [web:11]</li>
@@ -216,7 +229,7 @@
         </ul>
       </article>
 
-      <article class="project-card">
+      <article class="project-card" data-aos="fade-up" data-aos-delay="240">
         <h3>Operational Strength</h3>
         <ul class="list">
           <li>Lean team supported by specialist partners and vendors. [web:11]</li>
@@ -227,7 +240,7 @@
   </section>
 
   <!-- Governance / snapshot table -->
-  <section id="governance" class="section">
+  <section id="governance" class="section" data-aos="fade-up">
     <h2>Corporate Snapshot</h2>
     <p>
       The table below summarises key statutory and operational information for
@@ -250,7 +263,7 @@
         </tr>
         <tr>
           <td>Date of Incorporation</td>
-          <td>28 January 2013. [web:8][web:10][web:11][web:17]</td>
+          <td>28 January 2013. [web:8][web:10][web:11]</td>
         </tr>
         <tr>
           <td>Status</td>
@@ -287,7 +300,7 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="section section-alt">
+  <section id="contact" class="section section-alt" data-aos="fade-up">
     <h2>Contact</h2>
     <p>
       Reach out to discuss upcoming projects, consulting requirements, or
@@ -295,7 +308,7 @@
     </p>
 
     <div class="contact-grid">
-      <div class="contact-card">
+      <div class="contact-card" data-aos="fade-up" data-aos-delay="0">
         <h3>Registered Office</h3>
         <p>
           Paramount Project Endeavors Pvt. Ltd.<br />
@@ -305,7 +318,7 @@
         </p>
       </div>
 
-      <div class="contact-card">
+      <div class="contact-card" data-aos="fade-up" data-aos-delay="80">
         <h3>Director Contact</h3>
         <p>
           Pradeep Singh, Director<br />
@@ -316,7 +329,7 @@
         </p>
       </div>
 
-      <div class="contact-card">
+      <div class="contact-card" data-aos="fade-up" data-aos-delay="160">
         <h3>General Communication</h3>
         <p>
           Email: igs.paramount@gmail.com<br />
@@ -324,19 +337,35 @@
         </p>
       </div>
 
-      <form class="contact-form">
+      <!-- Formspree-ready form -->
+      <form
+        class="contact-form"
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        method="POST"
+        data-aos="fade-up"
+        data-aos-delay="240"
+      >
         <h3>Quick Enquiry</h3>
         <div class="form-row">
-          <input type="text" placeholder="Full name" required />
+          <input type="text" name="name" placeholder="Full name" required />
         </div>
         <div class="form-row">
-          <input type="email" placeholder="Work email" required />
+          <input type="email" name="email" placeholder="Work email" required />
         </div>
         <div class="form-row">
-          <input type="text" placeholder="Organisation / Project" />
+          <input
+            type="text"
+            name="organisation"
+            placeholder="Organisation / Project"
+          />
         </div>
         <div class="form-row">
-          <textarea rows="4" placeholder="How can we help?"></textarea>
+          <textarea
+            rows="4"
+            name="message"
+            placeholder="How can we help?"
+            required
+          ></textarea>
         </div>
         <button type="submit" class="pill-button">
           Submit enquiry
@@ -355,5 +384,13 @@
     crossorigin=""
   ></script>
   <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 700,
+      once: true,
+      offset: 80
+    });
+  </script>
 </body>
 </html>
