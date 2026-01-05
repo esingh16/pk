@@ -2,35 +2,144 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Company Projects in India</title>
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  />
+  <title>YOUR COMPANY NAME</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1>Our Projects Across India</h1>
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo-circle">Y</div>
+      <span class="brand-name">YOUR COMPANY NAME</span>
+    </div>
+    <nav class="main-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
   <main>
-    <div id="map"></div>
+    <!-- HOME / MAP -->
+    <section id="home" class="section section-home">
+      <div class="hero-text">
+        <h1>Projects Across India</h1>
+        <p>Explore our key developments city by city.</p>
+      </div>
 
-    <!-- Side panel for site details -->
-    <div id="info-panel">
-      <h2 id="info-title">Site details</h2>
-      <div id="info-content">Click a city or site marker to see details here.</div>
-    </div>
+      <!-- Custom stylized India map -->
+      <div class="india-map-wrapper">
+        <!-- Simple SVG outline of India; you can swap the path with a nicer SVG later -->
+        <svg
+          id="india-map"
+          viewBox="67 5 32 32"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <!-- India outline (simplified, replace with a better path if you want) -->
+          <path
+            id="india-outline"
+            d="M80 7 L83 9 L84 12 L86 13 L87 16 L86 19 L88 22 L88 24 L86 27 L84 29 L82 31 L79 33 L76 35 L73 35 L72 32 L70 30 L70 28 L71 26 L71 24 L69 22 L69 19 L71 17 L72 14 L74 12 L76 10 Z"
+          />
+          <!-- City points (approx positions in this viewBox) -->
+          <!-- Mumbai -->
+          <circle
+            class="city-point"
+            data-city="Mumbai"
+            cx="74.5"
+            cy="27.5"
+            r="0.4"
+          />
+          <!-- Pune -->
+          <circle
+            class="city-point"
+            data-city="Pune"
+            cx="75"
+            cy="28.3"
+            r="0.35"
+          />
+          <!-- Bengaluru -->
+          <circle
+            class="city-point"
+            data-city="Bengaluru"
+            cx="76.5"
+            cy="30.2"
+            r="0.35"
+          />
+        </svg>
+      </div>
+
+      <!-- Info panel for city/site details -->
+      <aside id="info-panel">
+        <h2 id="info-title">Site details</h2>
+        <div id="info-content">
+          Click a city on the map to view its sites.
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <h2>About</h2>
+      <p>
+        YOUR COMPANY NAME delivers high‑quality residential and commercial
+        projects across India with a focus on design, durability and on‑time
+        delivery.
+      </p>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section section-alt">
+      <h2>Services</h2>
+      <ul class="list">
+        <li>End‑to‑end real estate development.</li>
+        <li>Architectural design and structural engineering.</li>
+        <li>Project management and construction supervision.</li>
+        <li>Post‑handover facilities management.</li>
+      </ul>
+    </section>
+
+    <!-- PROJECTS GALLERY -->
+    <section id="projects" class="section">
+      <h2>Projects Gallery</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Mumbai Skyline Residences</h3>
+          <p>Bandra, Mumbai – Premium residential tower with sea views.</p>
+        </div>
+        <div class="project-card">
+          <h3>Airport Business Hub</h3>
+          <p>Santacruz, Mumbai – Grade‑A office spaces near the airport.</p>
+        </div>
+        <div class="project-card">
+          <h3>Tech Park Malad</h3>
+          <p>Malad, Mumbai – IT park with flexible office floors.</p>
+        </div>
+        <div class="project-card">
+          <h3>Whitefield Innovation Campus</h3>
+          <p>Bengaluru – Modern tech campus with green design.</p>
+        </div>
+        <div class="project-card">
+          <h3>Hinjawadi IT Center</h3>
+          <p>Pune – Multi‑phase IT and business park.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-alt">
+      <h2>Contact</h2>
+      <p>Email: contact@yourcompany.com</p>
+      <p>Phone: +91‑XXXXXXXXXX</p>
+      <p>Address: Your corporate office address in India.</p>
+    </section>
   </main>
 
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""
-  ></script>
+  <footer class="site-footer">
+    <p>© YOUR COMPANY NAME • All rights reserved.</p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
