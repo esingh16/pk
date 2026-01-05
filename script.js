@@ -1,6 +1,6 @@
 // script.js – interactive map + city list
 
-// Data model: cities and nested sites (kept from your version, text adjusted)
+// Data model: cities and nested sites
 const projectData = {
   cities: [
     {
@@ -101,7 +101,7 @@ function showCity(city) {
 
   let html = `<p><strong>${city.description}</strong></p>`;
   html += "<p>Select a site below for more information:</p>";
-  html += "<ul class=\"list\">";
+  html += '<ul class="list">';
   city.sites.forEach((site, idx) => {
     html += `<li class="site-item" data-city="${city.name}" data-site-index="${idx}">${site.name} – ${site.area}</li>`;
   });
@@ -174,3 +174,9 @@ projectData.cities.forEach((city) => {
 // Initial UI
 renderCityList();
 showCity(projectData.cities[0]);
+
+// Inject current year for a more real-time feel
+const yearSpan = document.getElementById("current-year");
+if (yearSpan) {
+  yearSpan.textContent = new Date().getFullYear().toString();
+}
