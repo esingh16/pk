@@ -9,8 +9,8 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #111827;
-  background: #f9fafb;
+  color: #e5e7eb;
+  background: #020617;
 }
 
 /* Header / nav */
@@ -23,42 +23,36 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 10px 24px;
-  background: #111827;
-  color: #f9fafb;
+  background: #020617;
+  border-bottom: 1px solid #111827;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
-.logo-circle {
-  width: 32px;
+.logo-img {
   height: 32px;
-  border-radius: 999px;
-  background: #fbbf24;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: #111827;
+  width: auto;
 }
 
 .brand-name {
   font-weight: 600;
   letter-spacing: 0.03em;
+  color: #f9fafb;
 }
 
 .main-nav a {
   margin-left: 18px;
-  color: #e5e7eb;
+  color: #9ca3af;
   text-decoration: none;
   font-size: 0.95rem;
 }
 
 .main-nav a:hover {
-  color: #fbbf24;
+  color: #a3e635;
 }
 
 /* Sections */
@@ -70,18 +64,21 @@ body {
 }
 
 .section-alt {
-  background: #e5e7eb33;
+  background: #020617;
+  border-top: 1px solid #111827;
+  border-bottom: 1px solid #111827;
 }
 
 .section h2 {
   margin-top: 0;
+  color: #f9fafb;
 }
 
 /* Home / map layout */
 
 .section-home {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr) minmax(0, 1.1fr);
   gap: 24px;
   align-items: start;
 }
@@ -89,58 +86,81 @@ body {
 .hero-text h1 {
   margin-top: 0;
   font-size: 2rem;
+  color: #f9fafb;
 }
 
-/* Stylized India map */
+/* Map card */
 
-.india-map-wrapper {
-  background: #e5e7eb;
-  border-radius: 16px;
-  padding: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.map-card {
+  background: #020617;
+  border-radius: 20px;
+  padding: 0;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
+  border: 1px solid #065f46;
+  overflow: hidden;
 }
 
-/* Fixed size, non-realistic style */
-#india-map {
-  width: 260px;
-  height: 320px;
+#map {
+  width: 100%;
+  height: 340px;
 }
 
-#india-outline {
-  fill: #f9fafb;
-  stroke: #111827;
-  stroke-width: 0.25;
+/* Dark map tiles hack: makes OSM look dark and slightly greenish */
+/* Based on Leaflet dark theme techniques. [web:61][web:63] */
+
+.leaflet-container {
+  background: #020617;
 }
 
-/* City points */
-
-.city-point {
-  fill: #ef4444;
-  stroke: #111827;
-  stroke-width: 0.12;
-  cursor: pointer;
-  transition: transform 0.15s ease, fill 0.15s ease;
+.leaflet-tile-pane {
+  filter: brightness(0.5) saturate(1.4) hue-rotate(-20deg);
 }
 
-.city-point:hover {
-  fill: #f97316;
-  transform: scale(1.4);
+/* City markers and site markers */
+
+.city-marker-icon {
+  background: #16a34a;
+  border-radius: 999px;
+  border: 2px solid #000;
+  width: 16px;
+  height: 16px;
+}
+
+.site-marker {
+  stroke: #000;
+  stroke-width: 1px;
 }
 
 /* Info panel */
 
 #info-panel {
-  background: #ffffff;
-  border-radius: 12px;
+  background: #020617;
+  border-radius: 16px;
   padding: 16px;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
+  border: 1px solid #065f46;
 }
 
-#info-panel h2 {
+#info-title {
   margin-top: 0;
+  color: #f9fafb;
 }
+
+#info-content {
+  font-size: 0.95rem;
+  color: #d1d5db;
+}
+
+.site-item {
+  cursor: pointer;
+  margin: 4px 0;
+}
+
+.site-item:hover {
+  color: #a3e635;
+}
+
+/* General lists and cards */
 
 .list {
   padding-left: 18px;
@@ -153,10 +173,11 @@ body {
 }
 
 .project-card {
-  background: #ffffff;
-  border-radius: 10px;
+  background: #020617;
+  border-radius: 12px;
   padding: 14px;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
+  border: 1px solid #15803d;
 }
 
 /* Footer */
@@ -164,9 +185,10 @@ body {
 .site-footer {
   padding: 14px 24px;
   text-align: center;
-  background: #111827;
-  color: #9ca3af;
+  background: #020617;
+  color: #6b7280;
   font-size: 0.85rem;
+  border-top: 1px solid #111827;
 }
 
 /* Responsive */
@@ -181,8 +203,7 @@ body {
     font-size: 0.9rem;
   }
 
-  #india-map {
-    width: 220px;
-    height: 280px;
+  #map {
+    height: 260px;
   }
 }
