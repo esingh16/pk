@@ -1,10 +1,28 @@
-// script.js – map, directory, project detail, contact
+// script.js – map, directory, project detail, sample work, contact
 
 // 1. Project directory data
 // IMPORTANT: extend this array with ALL rows from Project-details.xlsx
-// using the same structure. City and region are normalized manually.
-// image filenames must match files in your GitHub repo.
+// using the same structure. City & region are normalized manually.
+// This array is PURE DATA (no images) powering filters and map. [file:124]
 const projectDirectory = [
+  {
+    id: "2013-KFCH-KATRAJ-PUNE",
+    year: 2013,
+    client: "KFCH",
+    brand: "KFC",
+    city: "Pune",
+    region: "West",
+    location: "Katraj, Pune"
+  },
+  {
+    id: "2013-KFCH-WAI-SATARA",
+    year: 2013,
+    client: "KFCH",
+    brand: "KFC",
+    city: "Satara",
+    region: "West",
+    location: "WAI, Satara"
+  },
   {
     id: "2015-BK-JANAKPURI-DELHI",
     year: 2015,
@@ -12,8 +30,16 @@ const projectDirectory = [
     brand: "Burger King",
     city: "Delhi",
     region: "North",
-    location: "Janakpuri, Delhi",
-    image: "BURGER-KING-IMAGE.jpg"
+    location: "Janakpuri, Delhi"
+  },
+  {
+    id: "2015-CHAAYOS-TODI-MILLS",
+    year: 2015,
+    client: "Chaayos",
+    brand: "Chaayos",
+    city: "Mumbai",
+    region: "West",
+    location: "Todi mills, Lower Parel"
   },
   {
     id: "2018-MCD-VILE-PARLE-MUMBAI",
@@ -22,8 +48,7 @@ const projectDirectory = [
     brand: "McDonald’s",
     city: "Mumbai",
     region: "West",
-    location: "Vile Parle, Mumbai",
-    image: "MCDONALDS-IMAGE.jpg"
+    location: "Vile Parle, Mumbai"
   },
   {
     id: "2022-SUBWAY-BANGALORE",
@@ -32,18 +57,16 @@ const projectDirectory = [
     brand: "Subway",
     city: "Bengaluru",
     region: "South",
-    location: "Bangalore",
-    image: "SUBWAY-IMAGE.jpg"
+    location: "Bangalore"
   },
   {
-    id: "2023-CROMA-SOUTH-CITY-KOLKATA",
+    id: "2023-CROMA-ANKLESHWAR",
     year: 2023,
     client: "CROMA",
     brand: "Croma",
-    city: "Kolkata",
-    region: "East",
-    location: "South City, Kolkata",
-    image: "CROMA-IMAGE.jpg"
+    city: "Ankleshwar",
+    region: "West",
+    location: "Croma, Ankleshwar"
   },
   {
     id: "2023-PEPE-SOUTH-CITY-KOLKATA",
@@ -52,8 +75,7 @@ const projectDirectory = [
     brand: "Pepe Jeans",
     city: "Kolkata",
     region: "East",
-    location: "South City, Kolkata",
-    image: "PEPE-JEANS-IMAGE.jpg"
+    location: "South City, Kolkata"
   },
   {
     id: "2021-IZUMI-JUHU-MUMBAI",
@@ -62,8 +84,7 @@ const projectDirectory = [
     brand: "Izumi",
     city: "Mumbai",
     region: "West",
-    location: "Juhu, Mumbai",
-    image: "IZUMI-IMAGE.jpg"
+    location: "Juhu, Mumbai"
   },
   {
     id: "2021-TACOBELL-PUNE",
@@ -72,8 +93,7 @@ const projectDirectory = [
     brand: "Taco Bell",
     city: "Pune",
     region: "West",
-    location: "Pune",
-    image: "TACO-BELL-IMAGE.jpg"
+    location: "Pune"
   },
   {
     id: "2018-COPPER-CHIMNEY-DELUXE",
@@ -82,18 +102,7 @@ const projectDirectory = [
     brand: "Copper Chimney",
     city: "Mumbai",
     region: "West",
-    location: "Deluxe Caterers Pvt Ltd (Mumbai)",
-    image: "COPPER-CHIMNEY-IMAGE.jpg"
-  },
-  {
-    id: "2023-CHAAYOS-TODI-MILLS",
-    year: 2015,
-    client: "Chaayos",
-    brand: "Chaayos",
-    city: "Mumbai",
-    region: "West",
-    location: "Todi Mills, Lower Parel",
-    image: "CHAAYOS-IMAGE.jpg"
+    location: "Deluxe Caterers Pvt Ltd (Mumbai)"
   },
   {
     id: "2024-CTR-BANGALORE",
@@ -102,8 +111,7 @@ const projectDirectory = [
     brand: "CTR",
     city: "Bengaluru",
     region: "South",
-    location: "Bangalore",
-    image: "CTR-IMAGE.jpg"
+    location: "Bangalore"
   },
   {
     id: "2023-YOUMEE-INFINITI-ANDHERI",
@@ -112,14 +120,72 @@ const projectDirectory = [
     brand: "YouMee",
     city: "Mumbai",
     region: "West",
-    location: "YouMee, Infiniti Mall, Andheri",
-    image: "LBF-IMAGE-2.jpg"
+    location: "YouMee, Infiniti Mall, Andheri"
   }
   // TODO: add all remaining rows from Project-details.xlsx here
 ];
 
-// 2. Map & project-data for markers
-// Aggregate by city
+// 2. Sample images – only a few representative projects
+// These filenames must match the files in your GitHub repo. [file:107-118]
+const sampleImages = [
+  {
+    brand: "Burger King",
+    file: "BURGER-KING-IMAGE.jpg",
+    label: "Burger King – sample outlet"
+  },
+  {
+    brand: "McDonald’s",
+    file: "MCDONALDS-IMAGE.jpg",
+    label: "McDonald’s – sample outlet"
+  },
+  {
+    brand: "Subway",
+    file: "SUBWAY-IMAGE.jpg",
+    label: "Subway – sample outlet"
+  },
+  {
+    brand: "Croma",
+    file: "CROMA-IMAGE.jpg",
+    label: "Croma – sample electronics store"
+  },
+  {
+    brand: "Pepe Jeans",
+    file: "PEPE-JEANS-IMAGE.jpg",
+    label: "Pepe Jeans – sample fashion store"
+  },
+  {
+    brand: "Copper Chimney",
+    file: "COPPER-CHIMNEY-IMAGE.jpg",
+    label: "Copper Chimney – sample restaurant"
+  },
+  {
+    brand: "Taco Bell",
+    file: "TACO-BELL-IMAGE.jpg",
+    label: "Taco Bell – sample outlet"
+  },
+  {
+    brand: "Izumi",
+    file: "IZUMI-IMAGE.jpg",
+    label: "Izumi – ramen & sushi outlet"
+  },
+  {
+    brand: "Chaayos",
+    file: "CHAAYOS-IMAGE.jpg",
+    label: "Chaayos – experiments with chai"
+  },
+  {
+    brand: "CTR",
+    file: "CTR-IMAGE.jpg",
+    label: "CTR – sample outlet"
+  },
+  {
+    brand: "YouMee / LBF",
+    file: "LBF-IMAGE-2.jpg",
+    label: "YouMee – sample outlet"
+  }
+];
+
+// 3. Map & city aggregation
 function buildCityAggregation() {
   const cityMap = new Map();
   projectDirectory.forEach((p) => {
@@ -137,20 +203,40 @@ function buildCityAggregation() {
   return Array.from(cityMap.values());
 }
 
-// Basic city -> coordinates mapping (extend as needed)
+// City -> approximate coordinates (extend as needed)
 const cityCoordinates = {
   Mumbai: [19.076, 72.8777],
-  Delhi: [28.6139, 77.209],
-  Pune: [18.5204, 73.8567],
-  Bengaluru: [12.9716, 77.5946],
-  Kolkata: [22.5726, 88.3639],
   "Navi Mumbai": [19.033, 73.0297],
+  Pune: [18.5204, 73.8567],
+  Satara: [17.6914, 74.0003],
+  Thane: [19.2183, 72.9781],
+  Delhi: [28.6139, 77.209],
+  Gurgaon: [28.4595, 77.0266],
   Noida: [28.5355, 77.391],
+  "Greater Noida": [28.4744, 77.503],
+  Kanpur: [26.4499, 80.3319],
+  Lucknow: [26.8467, 80.9462],
+  Varanasi: [25.3176, 82.9739],
+  Prayagraj: [25.4358, 81.8463],
+  Jaipur: [26.9124, 75.7873],
+  Indore: [22.7196, 75.8577],
+  Ahmedabad: [23.0225, 72.5714],
+  Surat: [21.1702, 72.8311],
+  Ankleshwar: [21.6269, 72.9994],
+  Kolkata: [22.5726, 88.3639],
+  Siliguri: [26.7271, 88.3953],
   Guwahati: [26.1445, 91.7362],
-  Lucknow: [26.8467, 80.9462]
+  Dimapur: [25.9117, 93.7266],
+  Itanagar: [27.0844, 93.6053],
+  Gangtok: [27.3389, 88.6065],
+  Bengaluru: [12.9716, 77.5946],
+  Hyderabad: [17.385, 78.4867],
+  Chennai: [13.0827, 80.2707],
+  Mangalore: [12.9141, 74.856],
+  Kochi: [9.9312, 76.2673],
+  Hubli: [15.3647, 75.124]
 };
 
-// 3. Map initialisation (only if map element exists)
 let map;
 const mapElement = document.getElementById("map");
 if (mapElement) {
@@ -163,9 +249,7 @@ if (mapElement) {
   }).setView([22.9734, 78.6569], 5);
 
   L.control
-    .zoom({
-      position: "bottomright"
-    })
+    .zoom({ position: "bottomright" })
     .addTo(map);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -197,7 +281,6 @@ if (mapElement) {
     );
 
     marker.on("click", () => {
-      // When click on city marker, prefilter directory to that city
       const cityFilter = document.getElementById("filter-city");
       if (cityFilter) {
         cityFilter.value = c.city;
@@ -224,7 +307,6 @@ const summaryEl = document.getElementById("directory-summary");
 function initDirectoryFilters() {
   if (!resultsContainer) return;
 
-  // Populate dropdowns from data
   const years = Array.from(
     new Set(projectDirectory.map((p) => p.year).filter(Boolean))
   ).sort((a, b) => a - b);
@@ -344,40 +426,28 @@ function renderDirectoryResults(items) {
     brandEl.className = "directory-card-brand";
     brandEl.textContent = p.brand || p.client;
 
-    let imgHtml = "";
-    if (p.image) {
-      imgHtml = `<img src="${p.image}" alt="${p.brand || p.client} site">`;
-    }
-
-    const linkHtml = `<a href="projects.html?id=${encodeURIComponent(
-      p.id
-    )}" class="pill-button" style="margin-top:6px;align-self:flex-start;">
-      View details
-    </a>`;
-
-    card.innerHTML = "";
-    card.appendChild(header);
-    card.appendChild(subtitle);
-    card.appendChild(brandEl);
-    if (imgHtml) {
-      const wrapper = document.createElement("div");
-      wrapper.innerHTML = imgHtml;
-      card.appendChild(wrapper.firstChild);
-    }
     const meta = document.createElement("div");
     meta.className = "directory-card-meta";
     meta.textContent = `Client: ${p.client}`;
-    card.appendChild(meta);
 
-    const linkWrapper = document.createElement("div");
-    linkWrapper.innerHTML = linkHtml;
-    card.appendChild(linkWrapper.firstChild);
+    const link = document.createElement("a");
+    link.href = `projects.html?id=${encodeURIComponent(p.id)}`;
+    link.className = "pill-button";
+    link.style.marginTop = "6px";
+    link.style.alignSelf = "flex-start";
+    link.textContent = "View details";
+
+    card.appendChild(header);
+    card.appendChild(subtitle);
+    card.appendChild(brandEl);
+    card.appendChild(meta);
+    card.appendChild(link);
 
     resultsContainer.appendChild(card);
   });
 }
 
-// 5. Project detail page population
+// 5. Project detail page
 (function () {
   const container = document.getElementById("project-detail-container");
   if (!container) return;
@@ -392,14 +462,9 @@ function renderDirectoryResults(items) {
     return;
   }
 
-  const imgHtml = project.image
-    ? `<img src="${project.image}" alt="${project.brand}" class="project-image" />`
-    : "";
-
   container.innerHTML = `
     <article class="project-detail-main">
       <h3>${project.brand || project.client}</h3>
-      ${imgHtml}
       <p>${project.location || ""}</p>
     </article>
     <aside class="project-detail-sidebar">
@@ -415,18 +480,51 @@ function renderDirectoryResults(items) {
   `;
 })();
 
-// 6. Init directory (on index.html only)
+// 6. Sample work gallery
+function renderSampleWork() {
+  const grid = document.getElementById("sample-work-grid");
+  if (!grid) return;
+
+  grid.innerHTML = "";
+  sampleImages.forEach((item) => {
+    const card = document.createElement("article");
+    card.className = "directory-card";
+
+    const title = document.createElement("div");
+    title.className = "directory-card-title";
+    title.textContent = item.brand;
+
+    const img = document.createElement("img");
+    img.src = item.file;
+    img.alt = item.label;
+
+    const subtitle = document.createElement("div");
+    subtitle.className = "directory-card-subtitle";
+    subtitle.textContent = item.label;
+
+    card.appendChild(title);
+    card.appendChild(img);
+    card.appendChild(subtitle);
+
+    grid.appendChild(card);
+  });
+}
+
+// 7. Init on index.html
 if (document.getElementById("directory-results")) {
   initDirectoryFilters();
 }
+if (document.getElementById("sample-work-grid")) {
+  renderSampleWork();
+}
 
-// 7. Inject current year for snapshot
+// 8. Inject current year for snapshot
 const yearSpan = document.getElementById("current-year");
 if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear().toString();
 }
 
-// 8. Simple alert after form submission (Formspree)
+// 9. Simple notification after form submission
 const contactForm = document.querySelector(".contact-form");
 if (contactForm) {
   contactForm.addEventListener("submit", function () {
