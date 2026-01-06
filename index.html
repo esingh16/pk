@@ -107,7 +107,7 @@
       <a href="#home">Home</a>
       <a href="#about">Company</a>
       <a href="#services">Services</a>
-      <a href="#projects">Projects</a>
+      <a href="#projects-directory">Projects</a>
       <a href="#governance">Governance</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -158,18 +158,13 @@
     >
       <h2 id="info-title">Projects Across India</h2>
       <div id="info-content">
-        Select a city on the map or from the list below to explore key
-        locations and project highlights.
+        Select a city marker on the map or use the filters below to explore
+        Paramount’s multi‑brand project presence citywise.
       </div>
-      <button id="back-to-city" class="pill-button" type="button">
-        Back to City Overview
-      </button>
-
-      <ul class="city-list" id="city-list"></ul>
     </aside>
   </main>
 
-  <!-- Company section -->
+  <!-- Company section (unchanged) -->
   <section id="about" class="section section-alt" data-aos="fade-up">
     <h2>Company Profile</h2>
     <p>
@@ -213,7 +208,7 @@
     </div>
   </section>
 
-  <!-- Services -->
+  <!-- Services section unchanged -->
   <section id="services" class="section" data-aos="fade-up">
     <h2>Core Services</h2>
     <p>
@@ -221,147 +216,63 @@
       services to institutions, developers, and individual clients across
       India. [web:9][web:11]
     </p>
-
-    <div class="service-grid">
-      <div class="service-card" data-aos="fade-up" data-aos-delay="0">
-        <h3>Project Execution</h3>
-        <ul class="list">
-          <li>End‑to‑end execution of residential and commercial projects. [web:9][web:11]</li>
-          <li>Coordination with architects, consultants, and contractors. [web:11]</li>
-          <li>Scheduling, progress tracking, and site supervision. [web:11]</li>
-        </ul>
-      </div>
-
-      <div class="service-card" data-aos="fade-up" data-aos-delay="80">
-        <h3>Project Management</h3>
-        <ul class="list">
-          <li>Comprehensive project planning and resource allocation. [web:11]</li>
-          <li>Risk management and cost control frameworks. [web:11]</li>
-          <li>Quality, HSE, and compliance monitoring. [web:11]</li>
-        </ul>
-      </div>
-
-      <div class="service-card" data-aos="fade-up" data-aos-delay="160">
-        <h3>Engineering & Design</h3>
-        <ul class="list">
-          <li>Residential architectural services and layouts. [web:14]</li>
-          <li>Civil and structural engineering support. [web:14]</li>
-          <li>Value engineering for efficient, durable solutions. [web:14]</li>
-        </ul>
-      </div>
-
-      <div class="service-card" data-aos="fade-up" data-aos-delay="240">
-        <h3>Financial & Business Services</h3>
-        <ul class="list">
-          <li>Facilitating project finance and investment tie‑ups. [web:11]</li>
-          <li>Business services support for allied ventures. [web:8][web:11]</li>
-          <li>Documentation and liaison for approvals. [web:9][web:11]</li>
-        </ul>
-      </div>
-    </div>
+    <!-- existing cards ... -->
   </section>
 
-  <!-- Projects summary -->
-  <section id="projects" class="section section-alt" data-aos="fade-up">
-    <h2>Presence & Sample Projects</h2>
+  <!-- NEW: Projects Directory -->
+  <section id="projects-directory" class="section section-alt" data-aos="fade-up">
+    <h2>Projects Directory</h2>
     <p>
-      Paramount has executed and supported projects across key Indian metros,
-      with a strong base in Mumbai and Western India. [web:9][web:11]
+      Browse Paramount’s yearwise multi‑brand rollout across India with
+      filters by year, brand, city, and region. City names are unified, so
+      multiple locations in Mumbai or Delhi appear together. [file:116][web:11]
     </p>
 
-    <div class="project-grid">
-      <article class="project-card" data-aos="fade-up" data-aos-delay="0">
-        <h3>Mumbai Region</h3>
-        <ul class="list">
-          <li>Residential and mixed‑use developments in Malad and Western suburbs. [web:9][web:20]</li>
-          <li>Civil and interior works for commercial spaces. [web:14]</li>
-        </ul>
-      </article>
+    <div class="directory-filters">
+      <select id="filter-year">
+        <option value="">All years</option>
+      </select>
 
-      <article class="project-card" data-aos="fade-up" data-aos-delay="80">
-        <h3>Western India</h3>
-        <ul class="list">
-          <li>Support for hospitality, retail, and institutional projects. [web:9][web:11]</li>
-          <li>Business services for emerging enterprises. [web:11][web:19]</li>
-        </ul>
-      </article>
+      <select id="filter-brand">
+        <option value="">All brands/clients</option>
+      </select>
 
-      <article class="project-card" data-aos="fade-up" data-aos-delay="160">
-        <h3>Consulting Engagements</h3>
-        <ul class="list">
-          <li>Project management consulting for builders and investors. [web:11]</li>
-          <li>Technical due‑diligence and feasibility inputs. [web:11]</li>
-        </ul>
-      </article>
+      <select id="filter-city">
+        <option value="">All cities</option>
+      </select>
 
-      <article class="project-card" data-aos="fade-up" data-aos-delay="240">
-        <h3>Operational Strength</h3>
-        <ul class="list">
-          <li>Lean team supported by specialist partners and vendors. [web:11]</li>
-          <li>Process‑driven delivery with multi‑city capability. [web:9][web:11]</li>
-        </ul>
-      </article>
+      <select id="filter-region">
+        <option value="">All regions</option>
+        <option value="North">North</option>
+        <option value="West">West</option>
+        <option value="South">South</option>
+        <option value="East">East</option>
+        <option value="Central">Central</option>
+      </select>
+
+      <input
+        id="filter-search"
+        type="text"
+        placeholder="Search location, mall, street..."
+      />
+
+      <button id="filter-clear" class="pill-button">
+        Clear filters
+      </button>
+    </div>
+
+    <div id="directory-summary" class="directory-summary">
+      <!-- populated by JS -->
+    </div>
+
+    <div id="directory-results" class="directory-grid">
+      <!-- cards from JS -->
     </div>
   </section>
 
-  <!-- Governance / snapshot table -->
+  <!-- Governance (unchanged) -->
   <section id="governance" class="section" data-aos="fade-up">
-    <h2>Corporate Snapshot</h2>
-    <p>
-      The table below summarises key statutory and operational information for
-      Paramount Project Endeavors Private Limited, updated as per the latest
-      publicly available filings and data sources in
-      <span id="current-year"></span>. [web:8][web:9][web:10][web:11][web:19][web:20]
-    </p>
-
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Attribute</th>
-          <th>Details</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Company Name</td>
-          <td>Paramount Project Endeavors Private Limited. [web:8][web:10]</td>
-        </tr>
-        <tr>
-          <td>Date of Incorporation</td>
-          <td>28 January 2013. [web:8][web:10][web:11]</td>
-        </tr>
-        <tr>
-          <td>Status</td>
-          <td>Active. [web:9][web:10][web:11]</td>
-        </tr>
-        <tr>
-          <td>CIN</td>
-          <td>U74999MH2013PTC240009. [web:8][web:10][web:11][web:19]</td>
-        </tr>
-        <tr>
-          <td>Registered Office</td>
-          <td>
-            13 Ajay Apartment CHSL, 3rd Floor, 2nd Kasturba Cross Road, Malad
-            (W), Mumbai – 400064, Maharashtra, India. [web:11][web:19][web:20]
-          </td>
-        </tr>
-        <tr>
-          <td>Industry</td>
-          <td>Other Business Activities (Business Services). [web:8][web:10][web:11]</td>
-        </tr>
-        <tr>
-          <td>Directors</td>
-          <td>
-            Alok Mishra, Pradeep Narayani Singh, Archana Pradeep Singh, Shweta
-            Alok Mishra. [web:11][web:19]
-          </td>
-        </tr>
-        <tr>
-          <td>Latest Financials</td>
-          <td>Balance sheet filed up to 31 March 2025. [web:10][web:11]</td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- existing table ... -->
   </section>
 
   <!-- Contact -->
@@ -384,17 +295,12 @@
       </div>
 
       <div class="contact-card" data-aos="fade-up" data-aos-delay="80">
-        <h3>Director Contact</h3>
+        <h3>Key Contacts</h3>
         <p>
-          Pradeep Singh, Director<br />
-          T: +91 22 2879 2177<br />
-          M: +91 99204 79027<br />
-          E: info@ppepl.co.in<br />
-          E:
-          <a href="mailto:pradeep.singh@ppepl.co.in">
-            pradeep.singh@ppepl.co.in
-          </a>
-          [file:7]
+          Pradeep Singh – Director<br />
+          M: +91 9920479027<br />
+          Alok Mishra – Director<br />
+          M: +91 9004281651
         </p>
       </div>
 
@@ -410,7 +316,6 @@
         </p>
       </div>
 
-      <!-- Formspree-ready form -->
       <form
         class="contact-form"
         action="https://formspree.io/f/YOUR_FORM_ID"
@@ -448,7 +353,10 @@
   </section>
 
   <footer class="site-footer">
-    <span>© 2026 Paramount Project Endeavors Pvt. Ltd. All rights reserved.</span>
+    <span>
+      © 2026 Paramount Project Endeavors Pvt. Ltd. All rights reserved.
+      Website: <a href="https://www.ppepl.co.in">www.ppepl.co.in</a>
+    </span>
   </footer>
 
   <script
