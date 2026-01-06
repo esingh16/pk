@@ -1,9 +1,8 @@
 // script.js – map, directory, project detail, sample work, contact
 
 // 1. Project directory data
-// IMPORTANT: extend this array with ALL rows from Project-details.xlsx
-// using the same structure. City & region are normalized manually.
-// This array is PURE DATA (no images) powering filters and map. [file:124]
+// This array currently has sample rows; replace or extend with your
+// client–city entries using the pattern below. [file:125]
 const projectDirectory = [
   {
     id: "2013-KFCH-KATRAJ-PUNE",
@@ -122,11 +121,10 @@ const projectDirectory = [
     region: "West",
     location: "YouMee, Infiniti Mall, Andheri"
   }
-  // TODO: add all remaining rows from Project-details.xlsx here
+  // TODO: extend with all client–city pairs you listed
 ];
 
-// 2. Sample images – only a few representative projects
-// These filenames must match the files in your GitHub repo. [file:107-118]
+// 2. Sample images – representative projects (gallery only)
 const sampleImages = [
   {
     brand: "Burger King",
@@ -203,7 +201,7 @@ function buildCityAggregation() {
   return Array.from(cityMap.values());
 }
 
-// City -> approximate coordinates (extend as needed)
+// City -> approximate coordinates
 const cityCoordinates = {
   Mumbai: [19.076, 72.8777],
   "Navi Mumbai": [19.033, 73.0297],
@@ -285,7 +283,8 @@ if (mapElement) {
       if (cityFilter) {
         cityFilter.value = c.city;
         applyDirectoryFilters();
-        const directorySection = document.getElementById("projects-directory");
+        const directorySection =
+          document.getElementById("projects-directory");
         if (directorySection) {
           directorySection.scrollIntoView({ behavior: "smooth" });
         }
@@ -518,7 +517,7 @@ if (document.getElementById("sample-work-grid")) {
   renderSampleWork();
 }
 
-// 8. Inject current year for snapshot
+// 8. Current year for footer
 const yearSpan = document.getElementById("current-year");
 if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear().toString();
